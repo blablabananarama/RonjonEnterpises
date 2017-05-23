@@ -4,7 +4,7 @@ var lng;
 var pos;
 var type;
 var btn;
-
+var markers = [];
 
 //gets position of user
 navigator.geolocation.getCurrentPosition(savPos);
@@ -25,21 +25,23 @@ function savPos(position){
     map: map
   });
 
-//request object for nearbySearch, toDo: userinput = content
+};
+
+function search(){
   var request = {
     location: pos,
-    radius: 500,
-    type: 'museum'
+    radius: 2000,
+    type: type
   };
-
-  //searches for places in given area
   service = new google.maps.places.PlacesService(map);
   service.nearbySearch(request, callback);
+  clearMarkers();
+  markers = [];
+  callback();
 
 };
 
-
-//iterates trough search results and calls with every single on a function
+//iterates trough search results and calls with every single one a function
 function callback(results, status) {
     for(i = 0; i <= results.length; i++ )
     {
@@ -48,14 +50,24 @@ function callback(results, status) {
       };
     }
 
-//creates marker on map for every place 
+//creates marker on map for every place
     function createMarker(place) {
        var marker = new google.maps.Marker({
          map: map,
          position: place.geometry.location
        });
+       markers.push(marker);
      };
 
+     function setMapOnAll(map) {
+           for (var i = 0; i < markers.length; i++) {
+             markers[i].setMap(map);
+           }
+         }
+
+    function clearMarkers() {
+         setMapOnAll(null);
+}
 
 
 //creates map
@@ -77,5 +89,6 @@ for(var i = 0; i<= btn.length; i++){
 btn[i].addEventListener('click',
 function(){
   type = this.getAttribute('id');
+  search();
 });
 };
