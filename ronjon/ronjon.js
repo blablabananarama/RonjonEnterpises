@@ -32,7 +32,7 @@ function savPos(position){
     types: 'museum'
   };
 
-  //creates places object search, then searches
+  //searches for places in given area
   service = new google.maps.places.PlacesService(map);
   service.nearbySearch(request, callback);
 
