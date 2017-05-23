@@ -29,7 +29,7 @@ function savPos(position){
   var request = {
     location: pos,
     radius: 500,
-    types: 'museum'
+    type: 'museum'
   };
 
   //searches for places in given area
