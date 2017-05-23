@@ -36,6 +36,17 @@ padding-right: 5em;
 
 }
 
+.btn-text::after{
+  content:'.';
+  opacity: 0;
+  margin:.5em;
+  transition: all ease 0.5s;
+}
+.btn-text:hover:after{
+  opacity: 1;
+  margin:-0.1em;
+}
+
 .field:hover{
   background-color: #ff8f00;
 }
