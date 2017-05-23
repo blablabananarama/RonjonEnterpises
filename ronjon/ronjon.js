@@ -2,6 +2,8 @@ var map;
 var lat;
 var lng;
 var pos;
+var type;
+var btn;
 
 
 //gets position of user
@@ -27,7 +29,7 @@ function savPos(position){
   var request = {
     location: pos,
     radius: 500,
-    types:'restaurant'
+    types: 'museum'
   };
 
   //creates places object search, then searches
@@ -37,7 +39,7 @@ function savPos(position){
 };
 
 
-//iterates trough search results and class create marker function
+//iterates trough search results and calls with every single on a function
 function callback(results, status) {
     for(i = 0; i <= results.length; i++ )
     {
@@ -46,9 +48,8 @@ function callback(results, status) {
       };
     }
 
-//saves position of places in object and creates marker
+//creates marker on map for every place 
     function createMarker(place) {
-       var placeLoc = place.geometry.location;
        var marker = new google.maps.Marker({
          map: map,
          position: place.geometry.location
@@ -66,4 +67,15 @@ function initMap() {
 
   });
 
+};
+
+
+
+//buttons are clickable and save id in type
+btn = document.getElementsByClassName("field");
+for(var i = 0; i<= btn.length; i++){
+btn[i].addEventListener('click',
+function(){
+  type = this.getAttribute('id');
+});
 };
