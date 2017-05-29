@@ -1,21 +1,36 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <title>Just The Beginning</title>
     <link rel="stylesheet" type="text/css" href="ronjon.css">
+</head>
 
-  </head>
-
-  <body>
+<body>
     <div class="bg">
-    <div class= "container">
-      <div class= "field" id="restaurant"><p class="btn-text" >Hungry</p></div>
-      <div class= "field" id="museum"><p class="btn-text" >Culture</p></div>
+        <div class="bg2">
+            <div class="container">
+                <div class="field" id="restaurant">
+                    <p class="btn-text">Hungry</p>
+                </div>
+                <div class="field" id="museum">
+                    <p class="btn-text">Culture</p>
+                </div>
+            </div>
+            <div class="container">
+                <div class="slider">
+                  <input type="range" min="0" max="200" id="range">
+                </div>
+            </div>
 
+
+            <div class="map" id="map"></div>
+        </div>
     </div>
-    <div class="map" id="map"></div>
-  </div>
-  </body>
+</body>
+
 <script src="ronjon.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHiuBNNaSmrXydR3v11Mk4muqBraWa9Lw&callback=initMap&libraries=places"></script>
+
+
 </html>
